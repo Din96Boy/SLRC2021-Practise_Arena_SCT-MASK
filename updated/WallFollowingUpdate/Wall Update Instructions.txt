@@ -1,0 +1,15 @@
+Dear contestants,
+
+You may have noticed that there is a slight mismatch between the wall dimensions in the Webots sample environment we provided, and the dimensions we have mentioned in the task document. Note that the dimensions in the task document are correct and they will be the values used for the evaluation round.
+
+If you think you need the walls in the Webots software to be of the exact dimensions as specified in the task document, please follow these steps.
+	1. Save and close the Webots software. 
+	2. Replace the 'inner_walls.stl' file within solidworks folder inside the project directory with the new file with the same name in this folder. You must REPLACE the file for the following steps to work.
+	3. Open the Webots software and check whether the new walls are placed properly.
+	4. Under the 'DEF Inner_wall Solid' Node in the Node tree, set the translation to (0.19, 0, -0.66).
+		x: 0.19 m
+		y: 0 m
+		z: -0.66 m
+	5. Now the inner walls with the correct dimensions should be placed at the correct position. Check and save the world.
+
+Feel free to contact us if you face any issues getting the new walls placed into the Webots enviornment.

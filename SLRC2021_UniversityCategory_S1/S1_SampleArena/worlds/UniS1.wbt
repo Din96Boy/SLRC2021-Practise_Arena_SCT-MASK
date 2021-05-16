@@ -1,0 +1,483 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  info [
+    "Arena for Stage 1 of SLRC2021 University Category"
+  ]
+  title "SLRC2021 UniS1"
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation 0.5355812230356184 0.8358009229565845 0.1207872953443073 5.756075267025082
+  position -1.0130677311932368 0.7317834489366488 2.887074217513034
+  follow "robot"
+}
+DirectionalLight {
+  direction 0 -1 0
+}
+DirectionalLight {
+  direction -1 -1 0
+}
+DirectionalLight {
+  direction 0 -1 -1
+}
+DirectionalLight {
+  direction 1 -1 0
+}
+DirectionalLight {
+  direction 0 -1 1
+}
+RectangleArena {
+  name "Floor_black"
+  floorSize 3 4
+  floorTileSize 2 2
+  floorAppearance Parquetry {
+    type "dark strip"
+    colorOverride 0 0 0
+  }
+  wallAppearance DEF Wall_white PBRAppearance {
+    roughness 1
+    metalness 0
+    name "Wall_white"
+  }
+}
+DEF Line Solid {
+  translation -0.613 -0.00485 -1.5
+  scale 0.01 0.01 0.01
+  children [
+    Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry Mesh {
+        url [
+          "../solidworks/Lines.STL"
+        ]
+      }
+      castShadows FALSE
+      isPickable FALSE
+    }
+  ]
+  name "White_lines"
+  locked TRUE
+  translationStep 0
+  rotationStep 0
+}
+DEF Squares Group {
+  children [
+    DEF Patch Solid {
+      translation -0.075 -0.00484 1.1
+      scale 0.01 0.01 0.01
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../solidworks/Square.STL"
+            ]
+          }
+          castShadows FALSE
+          isPickable FALSE
+        }
+      ]
+      name "color_patch"
+      locked TRUE
+      translationStep 0
+      rotationStep 0
+    }
+    DEF Green Solid {
+      translation 0.01 -0.00484 -1.65
+      scale 0.01 0.01 0.01
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 1 0
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../solidworks/Square.STL"
+            ]
+          }
+          castShadows FALSE
+          isPickable FALSE
+        }
+      ]
+      name "green_square"
+      locked TRUE
+      translationStep 0
+      rotationStep 0
+    }
+    DEF Red Solid {
+      translation -0.41 -0.00484 -1.65
+      scale 0.01 0.01 0.01
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../solidworks/Square.STL"
+            ]
+          }
+          castShadows FALSE
+          isPickable FALSE
+        }
+      ]
+      name "red_square"
+      locked TRUE
+      translationStep 0
+      rotationStep 0
+    }
+    DEF Blue Solid {
+      translation 0.43 -0.00484 -1.65
+      scale 0.01 0.01 0.01
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Mesh {
+            url [
+              "../solidworks/Square.STL"
+            ]
+          }
+          castShadows FALSE
+          isPickable FALSE
+        }
+      ]
+      name "blue_square"
+      locked TRUE
+      translationStep 0
+      rotationStep 0
+    }
+  ]
+}
+DEF Inner_wall Solid {
+  translation 0.005 0 -0.66
+  scale 0.01 0.01 0.01
+  children [
+    DEF Inner_wall Shape {
+      appearance USE Wall_white
+      geometry Mesh {
+        url [
+          "../solidworks/Inner_walls.STL"
+        ]
+      }
+    }
+  ]
+  name "Inner_walls"
+  boundingObject USE Inner_wall
+  locked TRUE
+  recognitionColors [
+    1 1 1
+  ]
+  translationStep 0
+  rotationStep 0
+}
+DEF Right_pillar Solid {
+  translation 0.12 0.02 0.74
+  children [
+    Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.02 0.04 0.12
+      }
+    }
+  ]
+  name "R_pillar"
+  radarCrossSection 1
+}
+DEF Left_pillar Solid {
+  translation -0.12 0.04 0.74
+  children [
+    Shape {
+      appearance PBRAppearance {
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.02 0.09 0.12
+      }
+    }
+  ]
+  name "L_pillar"
+  radarCrossSection 1
+}
+DEF My_robot1 Robot {
+  translation -2.09142e-07 -0.00150139 1.64106
+  rotation -1.4681490476928152e-07 0.9999212816996104 0.012547127328078254 3.1415836751108053
+  children [
+    Solid {
+      translation -0.002 0.015 0.05
+      rotation 1 0 0 1.5707996938995747
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.2 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.06 0.01
+          }
+        }
+      ]
+      name "solidfront"
+    }
+    DistanceSensor {
+      translation 0 0.01 0.08
+      rotation 0 0 1 -1.5707996938995747
+      name "ir_11"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.032 0.01 0.05
+      rotation 0 0 1 -1.5707996938995747
+      name "ir_9"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.032 0.01 0.05
+      rotation 0 0 1 -1.5707996938995747
+      name "ir_10"
+      type "infra-red"
+    }
+    Solid {
+      translation 0.068 0.04 0.03
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.2 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.06 0.01
+          }
+        }
+      ]
+      name "solid(4)"
+    }
+    Solid {
+      translation -0.068 0.04 0.03
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.2 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.06 0.01
+          }
+        }
+      ]
+      name "solid(3)"
+    }
+    DistanceSensor {
+      translation 0.074 0.06 0.03
+      name "ir_7"
+      lookupTable [
+        0 0 0
+        0.3 1000 0
+      ]
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.074 0.06 0.03
+      rotation 0 1 0 3.141592653589793
+      name "ir_8"
+      lookupTable [
+        0 0 0
+        0.3 1000 0
+      ]
+      type "infra-red"
+    }
+    Solid {
+      translation 0.039 0.01 0.03
+      children [
+        DEF sensor_shape Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.5 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.07 0.01 0.01
+          }
+        }
+      ]
+      name "sensor_node_solid(1)"
+    }
+    Solid {
+      translation -0.039 0.01 0.03
+      children [
+        DEF sensor_shape Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.5 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.07 0.01 0.01
+          }
+        }
+      ]
+      name "sensor_node_solid"
+    }
+    DistanceSensor {
+      translation 0 0.01 -0.05
+      rotation 0 0 1 -1.5707996938995747
+      name "ir_6"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.074 0.01 0.03
+      rotation 0 1 0 3.141592653589793
+      name "ir_5"
+      lookupTable [
+        0 0 0
+        0.3 1000 0
+      ]
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.074 0.01 0.03
+      name "ir_3"
+      lookupTable [
+        0 0 0
+        0.3 1000 0
+      ]
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0 0.01 0.047
+      rotation 0 0 1 -1.5707996938995747
+      name "ir_2"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation -0.005 0.01 0.05
+      rotation 0 0 1 -1.5707996938995747
+      name "ir_1"
+      type "infra-red"
+    }
+    DistanceSensor {
+      translation 0.005 0.01 0.05
+      rotation 0 0 1 -1.5707996938995747
+      name "ir_0"
+      type "infra-red"
+    }
+    Solid {
+      translation 0 0.05 -0.05
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.3 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.029
+          }
+        }
+        Camera {
+          translation 0 -2.89267e-12 -0.015
+          rotation 1 0 0 -1.57
+          name "CAM01"
+          fieldOfView 0.6
+          width 256
+          height 256
+          recognition Recognition {
+          }
+        }
+      ]
+      name "solid(2)"
+    }
+    DEF Body_2 Transform {
+      translation 0 0.0315 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.5 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.1 0.06 0.1
+          }
+        }
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 1.5574400642913875
+        anchor 0.05 0.025 0
+      }
+      device [
+        RotationalMotor {
+          name "motor_01"
+        }
+      ]
+      endPoint Solid {
+        translation 0.05 0.025 0
+        rotation 0.5750691369208338 -0.5746113761975603 0.5823377491675025 2.0862373105971614
+        children [
+          DEF wheel Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.025
+            }
+          }
+        ]
+        boundingObject USE wheel
+        physics DEF wheel_physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 1.5574400255315366
+        anchor -0.05 0.025 0
+      }
+      device [
+        RotationalMotor {
+          name "motor_02"
+        }
+      ]
+      endPoint Solid {
+        translation -0.05 0.025 0
+        rotation 0.5750691293613737 -0.5746113686441164 0.5823377640858327 2.0862372883075673
+        children [
+          USE wheel
+        ]
+        name "solid(1)"
+        boundingObject USE wheel
+        physics USE wheel_physics
+      }
+    }
+  ]
+  boundingObject USE Body_2
+  physics Physics {
+  }
+  controller "my_slrc_robot3"
+}
